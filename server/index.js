@@ -23,7 +23,9 @@ app.use("/user" ,userRoutes)
 const BookRoutes = require("./routes/bookRoutes"); 
 app.use("/books", BookRoutes); 
 
-
+app.get("*", (req, res) => {
+    res.json({status : 404, success : false, message : "Invalid request"}); 
+})
 app.listen(PORT, () => {
     console.log(`SERVER IS RUNNING AT PORT ${PORT} `)
 })

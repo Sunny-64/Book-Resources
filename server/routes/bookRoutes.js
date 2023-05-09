@@ -43,4 +43,9 @@ Router.patch("/update/:id", uploadBook.single("image"), bookController.updateBoo
 
 Router.delete("/delete/:id", bookController.deleteBook)
 
+
+Router.get("*", (req, res) => {
+  res.json({status : 404, success : false, message : "Invalid request"}); 
+})
+
 module.exports = Router; 
