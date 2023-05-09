@@ -1,0 +1,292 @@
+{
+	"info": {
+		"_postman_id": "9c3f2c32-8cb3-47a8-86cb-f6f4374fc62e",
+		"name": "Book Resources",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26635070",
+		"_collection_link": "https://galactic-shuttle-139349.postman.co/workspace/Flash-fiction~3f1fefdc-0d38-4be9-8ac3-9e0db78bda55/collection/26635070-9c3f2c32-8cb3-47a8-86cb-f6f4374fc62e?action=share&creator=26635070&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "sunny",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "sunny@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/user/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "sunny@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/user/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Book",
+			"item": [
+				{
+					"name": "Create Book",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Harry potter",
+									"type": "text"
+								},
+								{
+									"key": "author",
+									"value": "sunny",
+									"type": "text"
+								},
+								{
+									"key": "pages",
+									"value": "111",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "365",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/ACER/OneDrive/Pictures/Anime wallpapers/Icon Hinata Shoyo.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/books/create",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"books",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All books",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/books",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Book By Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/books/id/645a2e7a299237982db6f03e",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"books",
+								"id",
+								"645a2e7a299237982db6f03e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Book By Name",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/books/name/Harry%20potter",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"books",
+								"name",
+								"Harry%20potter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Book",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "atomic habits",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/ACER/OneDrive/Pictures/Anime wallpapers/Icon Hinata Shoyo.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/books/update/645a2e7a299237982db6f03e",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"books",
+								"update",
+								"645a2e7a299237982db6f03e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Book",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/books/delete/645a2e7a299237982db6f03e",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"books",
+								"delete",
+								"645a2e7a299237982db6f03e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
