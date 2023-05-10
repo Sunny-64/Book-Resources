@@ -8,7 +8,7 @@ exports.register = async (req, res) => {
     
     // Check if any of the fields are empty
     if(!(name && email && password)) {
-        res.json({status : 400, success : false, message : "All Fields are required"}); 
+        return res.json({status : 400, success : false, message : "All Fields are required"}); 
     }
     var emailFormat = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
     if (!email.match(emailFormat)) { 

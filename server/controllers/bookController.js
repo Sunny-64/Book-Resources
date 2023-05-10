@@ -115,7 +115,9 @@ exports.updateBook = async(req, res) => {
                     doesBookExist.updatedAt = Date.now(); 
                     if(req.file){
                         let prevImage = path.basename(doesBookExist.imageUrl);
+                        console.log(prevImage)
                         if (fs.existsSync(path.join(__dirname + "/../public/images/" + prevImage))) {
+                            console.log(path.join(__dirname + "/../public/images/" + prevImage))
                             fs.rmSync(path.join(__dirname + "/../public/images/" + prevImage));
                         }
                         doesBookExist.imageUrl = "/images/" + req.file.filename; 
@@ -141,14 +143,19 @@ exports.deleteBook = async(req, res) => {
             res.json({status : 404, success : false, message : "Book not Found"}); 
         }
         else{
-            if (fs.existsSync(path.join(__dirname + "/../public/images/" + path.basename(findBook.imageUrl)))) {
-                fs.rmSync(path.join(__dirname + "/../public/images/" + path.basename(findBook.imageUrl)));
+            if(req.user._id == findBook.createdBy){
+                if (fs.existsSync(path.join(__dirname + "/../public/images/" + path.basename(findBook.imageUrl)))) {
+                    fs.rmSync(path.join(__dirname + "/../public/images/" + path.basename(findBook.imageUrl)));
+                }
+                await Book.deleteOne({_id : id}); 
+                const findUser = await User.findOne({_id : req.user._id}); 
+                findUser.noOfBooksAdded--; 
+                await findUser.save(); 
+                res.json({status : 200, success : true, message : "Book Deleted Successfully"}); 
             }
-            await Book.deleteOne({_id : id}); 
-            const findUser = await User.findOne({_id : req.user._id}); 
-            findUser.noOfBooksAdded--; 
-            await findUser.save(); 
-            res.json({status : 200, success : true, message : "Book Deleted Successfully"}); 
+            else{
+                res.json({status : 401, success : false, message : "Unauthorized"}); 
+            }
         }
     }
     catch(err){
