@@ -12,7 +12,7 @@ exports.register = async (req, res) => {
     }
     var emailFormat = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
     if (!email.match(emailFormat)) { 
-        res.json({status : 400, success : false, message : "Invalid email"});
+        return res.json({status : 400, success : false, message : "Invalid email"});
     }
     else{
         try{
