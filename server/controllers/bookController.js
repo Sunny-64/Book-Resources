@@ -115,9 +115,7 @@ exports.updateBook = async(req, res) => {
                     doesBookExist.updatedAt = Date.now(); 
                     if(req.file){
                         let prevImage = path.basename(doesBookExist.imageUrl);
-                        console.log(prevImage)
                         if (fs.existsSync(path.join(__dirname + "/../public/images/" + prevImage))) {
-                            console.log(path.join(__dirname + "/../public/images/" + prevImage))
                             fs.rmSync(path.join(__dirname + "/../public/images/" + prevImage));
                         }
                         doesBookExist.imageUrl = "/images/" + req.file.filename; 
